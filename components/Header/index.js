@@ -23,26 +23,14 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
         {({ open }) => (
           <>
             <div className="flex items-center justify-between p-2 laptop:p-0">
-              <h1
-                onClick={() => router.push("/")}
-                className="font-medium p-2 laptop:p-0 link"
-              >
+              <h1 onClick={() => router.push("/")} className="font-medium p-2 laptop:p-0 link">
                 {name}.
               </h1>
 
               <div className="flex items-center">
                 {data.darkMode && (
-                  <Button
-                    onClick={() =>
-                      setTheme(theme === "dark" ? "light" : "dark")
-                    }
-                  >
-                    <img
-                      className="h-6"
-                      src={`/images/${
-                        theme === "dark" ? "moon.svg" : "sun.svg"
-                      }`}
-                    ></img>
+                  <Button onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
+                    <img className="h-6" src={`/images/${theme === "dark" ? "moon.svg" : "sun.svg"}`}></img>
                   </Button>
                 )}
 
@@ -69,49 +57,26 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
             >
               {!isBlog ? (
                 <div className="grid grid-cols-1">
-                  <Button onClick={handleWorkScroll}>Work</Button>
-                  <Button onClick={handleAboutScroll}>About</Button>
-                  {showBlog && (
-                    <Button onClick={() => router.push("/blog")}>Blog</Button>
-                  )}
-                  {showResume && (
-                    <Button
-                      onClick={() =>
-                        window.open("mailto:hello@chetanverma.com")
-                      }
-                    >
-                      Resume
-                    </Button>
-                  )}
+                  <Button onClick={handleWorkScroll}>프로젝트</Button>
+                  <Button onClick={handleAboutScroll}>소개</Button>
+                  {showBlog && <Button onClick={() => window.open(`${data.socials[1].link}`, "_blank")}>블로그</Button>}
+                  {showResume && <Button onClick={() => router.push("/resume")}>이력서</Button>}
 
-                  <Button
-                    onClick={() => window.open("mailto:hello@chetanverma.com")}
-                  >
-                    Contact
-                  </Button>
+                  <Button onClick={() => window.open("mailto:m3088787@gmail.com")}>연락처</Button>
                 </div>
               ) : (
                 <div className="grid grid-cols-1">
                   <Button onClick={() => router.push("/")} classes="first:ml-1">
-                    Home
+                    홈
                   </Button>
-                  {showBlog && (
-                    <Button onClick={() => router.push("/blog")}>Blog</Button>
-                  )}
+                  {showBlog && <Button onClick={() => window.open(`${data.socials[1].link}`, "_blank")}>블로그</Button>}
                   {showResume && (
-                    <Button
-                      onClick={() => router.push("/resume")}
-                      classes="first:ml-1"
-                    >
-                      Resume
+                    <Button onClick={() => router.push("/resume")} classes="first:ml-1">
+                      이력서
                     </Button>
                   )}
 
-                  <Button
-                    onClick={() => window.open("mailto:hello@chetanverma.com")}
-                  >
-                    Contact
-                  </Button>
+                  <Button onClick={() => window.open("mailto:hello@chetanverma.com")}>연락처</Button>
                 </div>
               )}
             </Popover.Panel>
@@ -123,69 +88,37 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
           theme === "light" && "bg-white"
         } dark:text-white top-0 z-10 tablet:flex`}
       >
-        <h1
-          onClick={() => router.push("/")}
-          className="font-medium cursor-pointer mob:p-2 laptop:p-0"
-        >
+        <h1 onClick={() => router.push("/")} className="font-medium cursor-pointer mob:p-2 laptop:p-0">
           {name}.
         </h1>
         {!isBlog ? (
           <div className="flex">
-            <Button onClick={handleWorkScroll}>Work</Button>
-            <Button onClick={handleAboutScroll}>About</Button>
-            {showBlog && (
-              <Button onClick={() => router.push("/blog")}>Blog</Button>
-            )}
-            {showResume && (
-              <Button
-                onClick={() => router.push("/resume")}
-                classes="first:ml-1"
-              >
-                Resume
-              </Button>
-            )}
-
-            <Button onClick={() => window.open("mailto:hello@chetanverma.com")}>
-              Contact
-            </Button>
+            <Button onClick={handleWorkScroll}>프로젝트</Button>
+            <Button onClick={handleAboutScroll}>소개</Button>
+            {showBlog && <Button onClick={() => window.open(`${data.socials[1].link}`, "_blank")}>블로그</Button>}
+            {showResume && <Button onClick={() => router.push("/resume")}>이력서</Button>}
+            <Button onClick={() => window.open("mailto:m3088787@gmail.com")}>연락처</Button>{" "}
             {mounted && theme && data.darkMode && (
-              <Button
-                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              >
-                <img
-                  className="h-6"
-                  src={`/images/${theme === "dark" ? "moon.svg" : "sun.svg"}`}
-                ></img>
+              <Button onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
+                <img className="h-6" src={`/images/${theme === "dark" ? "moon.svg" : "sun.svg"}`}></img>
               </Button>
             )}
           </div>
         ) : (
           <div className="flex">
             <Button onClick={() => router.push("/")}>Home</Button>
-            {showBlog && (
-              <Button onClick={() => router.push("/blog")}>Blog</Button>
-            )}
+            {showBlog && <Button onClick={() => router.push(`${data.socials[1].link}`)}>Blog</Button>}
             {showResume && (
-              <Button
-                onClick={() => router.push("/resume")}
-                classes="first:ml-1"
-              >
+              <Button onClick={() => router.push("/resume")} classes="first:ml-1">
                 Resume
               </Button>
             )}
 
-            <Button onClick={() => window.open("mailto:hello@chetanverma.com")}>
-              Contact
-            </Button>
+            <Button onClick={() => window.open("mailto:hello@chetanverma.com")}>Contact</Button>
 
             {mounted && theme && data.darkMode && (
-              <Button
-                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              >
-                <img
-                  className="h-6"
-                  src={`/images/${theme === "dark" ? "moon.svg" : "sun.svg"}`}
-                ></img>
+              <Button onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
+                <img className="h-6" src={`/images/${theme === "dark" ? "moon.svg" : "sun.svg"}`}></img>
               </Button>
             )}
           </div>
