@@ -106,15 +106,15 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
           </div>
         ) : (
           <div className="flex">
-            <Button onClick={() => router.push("/")}>Home</Button>
-            {showBlog && <Button onClick={() => router.push(`${data.socials[1].link}`)}>Blog</Button>}
+            <Button onClick={() => router.push("/")}>홈</Button>
+            {showBlog && <Button onClick={() => window.open(`${data.socials[1].link}`, "_blank")}>블로그</Button>}
             {showResume && (
               <Button onClick={() => router.push("/resume")} classes="first:ml-1">
-                Resume
+                이력서
               </Button>
             )}
 
-            <Button onClick={() => window.open("mailto:hello@chetanverma.com")}>Contact</Button>
+            <Button onClick={() => window.open("mailto:m3088787@gmail.com")}>연락처</Button>
 
             {mounted && theme && data.darkMode && (
               <Button onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
